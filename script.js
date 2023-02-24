@@ -49,6 +49,9 @@ function submitForm(){
 
     // test form object
     console.table(employee);
+    
+    //Push employee into allEmployees
+    allEmployees.push(employee);
 
     render();
 }
@@ -57,6 +60,14 @@ function submitForm(){
 function render(){
     // Test function entry
     console.log('Entered render');
-    // Empty the employee 
+
+    // Empty the employees table
+    if(allEmployees.length === 0){
+        $('#employeesTable').hide();
+    }
+    else{
+        $('#employeesTable').show();
+    }
+
 
 }
