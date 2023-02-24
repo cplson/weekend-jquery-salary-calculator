@@ -9,6 +9,8 @@ Create a delete button that removes an employee from the DOM. For
 Base mode, it does not need to remove that Employee's salary from 
 the reported total.
 */
+// Global Variables
+let allEmployees = [];
 
 $('document').ready(onReady);
 
@@ -19,8 +21,8 @@ function onReady(){
 }
 
 /*
--Collect the form information 
--Store the information to calculate monthly costs 
+*Collect the form information 
+*Store the information to calculate monthly costs 
 -append information to the DOM and clear the input fields. 
 -Using the stored information, 
 calculate monthly costs and append this to the to DOM. 
@@ -45,5 +47,16 @@ function submitForm(){
         salary: salary
     }
 
+    // test form object
     console.table(employee);
+
+    render();
+}
+
+//Function to render updated employees to the DOM
+function render(){
+    // Test function entry
+    console.log('Entered render');
+    // Empty the employee 
+
 }
