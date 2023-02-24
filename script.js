@@ -48,7 +48,7 @@ function submitForm(){
     }
 
     // test form object
-    console.table(employee);
+    //console.table(employee);
     
     //Push employee into allEmployees
     allEmployees.push(employee);
@@ -62,6 +62,8 @@ function render(){
     console.log('Entered render');
 
     // Empty the employees table
+    $('employeesTable').empty();
+
     if(allEmployees.length === 0){
         $('#employeesTable').hide();
     }
@@ -69,5 +71,18 @@ function render(){
         $('#employeesTable').show();
     }
 
+    for(let employee of allEmployees){
+        console.log(employee);
+        $('#employeesTable').append(`
+            <tr class="employeeRow">
+                <td class="employeeIdData">${employee.id}</td>
+                <td class="firstNameData">${employee.first}</td>
+                <td class="lastNameData">${employee.last}</td>
+                <td class="jobTitleData">${employee.title}</td>
+                <td class="annualSalaryData">${employee.salary}</td>
+            </tr>
+        `);
+    }
+    
 
 }
