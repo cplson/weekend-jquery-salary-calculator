@@ -11,6 +11,7 @@ the reported total.
 */
 // Global Variables
 let allEmployees = [];
+let totalCosts = 0;
 
 $('document').ready(onReady);
 
@@ -23,7 +24,7 @@ function onReady(){
 /*
 *Collect the form information 
 *Store the information to calculate monthly costs 
--append information to the DOM and clear the input fields. 
+*append information to the DOM and clear the input fields. 
 -Using the stored information, 
 calculate monthly costs and append this to the to DOM. 
     ~If the total monthly cost exceeds $20,000, 
@@ -53,11 +54,11 @@ function submitForm(){
     //Push employee into allEmployees
     allEmployees.push(employee);
 
-    $(`#firstNameInput`).val("");
-    $(`#lastNameInput`).val("");
-    $(`#idNumberInput`).val("");
-    $(`#titleInput`).val("");
-    $(`#salaryInput`).val("");
+    // Clear input fields
+    clearFields();
+
+    //Calculate costs
+    calculateCost();
 
     render();
 }
@@ -77,6 +78,7 @@ function render(){
         $('#employeesTable').show();
     }
 
+    //Render every object in the allEmployees array
     for(let employee of allEmployees){
         console.log(employee);
         $('#employeesTable').append(`
@@ -89,9 +91,29 @@ function render(){
             </tr>
         `);
     }
-    
-    // Funcion to clear input fields
-    function clearFields(){
+}
 
+// Funcion to clear input fields
+function clearFields(){
+    $(`#firstNameInput`).val("");
+    $(`#lastNameInput`).val("");
+    $(`#idNumberInput`).val("");
+    $(`#titleInput`).val("");
+    $(`#salaryInput`).val("");
+}
+
+// Calculate cost
+function calculateCost(){
+    // Test function entry
+    console.log('Entered calculateCost');
+    // Reset the costs
+    totalCosts = 0;
+
+    // iterate through the array and find the total cost
+    for(let employee of allEmployees){
+        totalCosts += Number(employee.salary);
     }
+
+    //test cost
+    console.log(totalCosts);
 }
