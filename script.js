@@ -53,6 +53,12 @@ function submitForm(){
     //Push employee into allEmployees
     allEmployees.push(employee);
 
+    $(`#firstNameInput`).val("");
+    $(`#lastNameInput`).val("");
+    $(`#idNumberInput`).val("");
+    $(`#titleInput`).val("");
+    $(`#salaryInput`).val("");
+
     render();
 }
 
@@ -62,7 +68,7 @@ function render(){
     console.log('Entered render');
 
     // Empty the employees table
-    $('employeesTable').empty();
+    $('#employeesTable').empty();
 
     if(allEmployees.length === 0){
         $('#employeesTable').hide();
@@ -84,5 +90,8 @@ function render(){
         `);
     }
     
+    // Funcion to clear input fields
+    function clearFields(){
 
+    }
 }
