@@ -78,6 +78,11 @@ function render(){
         $('#costDiv').hide();
     }
     else{
+        // If total costs exceeds $20,000 then turns the
+        // background of the total cost to red
+        if(totalCosts > 20000){
+            $('#totalCost').css('background-color', 'red');
+        }
         $('#employeesTable').show();
         $('#costDiv').show();
     }
