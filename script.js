@@ -69,7 +69,7 @@ function render(){
     console.log('Entered render');
 
     // Empty the employees table
-    $('#employeesData').empty();
+    $('.employeeRow').empty();
 
     // shows the employee table data and monthly cost div,
     // unless there are no employees in the array
