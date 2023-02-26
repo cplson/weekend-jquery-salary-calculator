@@ -5,7 +5,7 @@ first name, last name, ID number, job title, annual salary.
 
 
 
-Create a delete button that removes an employee from the DOM. For 
+*Create a delete button that removes an employee from the DOM. For 
 Base mode, it does not need to remove that Employee's salary from 
 the reported total.
 */
@@ -61,26 +61,50 @@ function submitForm(){
     // Clear input fields
     clearFields();
 
-    //Calculate costs
-    calculateCost();
-
     // render the page
     render();
 }
 
+// When a remove button is clicked, the corresponding employee
+// will be removed from allEmployees and the employees table
 function removeEmployee(){
     // Test removeEmployee entry
     console.log('Entered removeEmployee');
 
+    // Temporary array to grab all employees that are
+    // to stay in the allEmployees array
+    const updatedEmployees = [];
+
     // Gets the ID of the employee to be removed
     const ID = $(this).parent().siblings().first().text();
     console.log('this corresponding employees id is:', ID);
+
+    // loop through every employee in allEmployees array
+    for(let employee of allEmployees){
+        if(employee.id === ID){
+            console.log('found match');
+        }
+        else{
+            // if employee is not a match push it to the 
+            // temporary array
+            updatedEmployees.push(employee);
+        }
+    }
+
+    // update allEmployees
+    allEmployees = updatedEmployees;
+
+    //render the updated info
+    render();
 }
 
 //Function to render updated employees to the DOM
 function render(){
     // Test function entry
     console.log('Entered render');
+
+    //Calculate costs
+    calculateCost();
 
     // Empty the employees table
     $('.employeeRow').empty();
@@ -93,7 +117,8 @@ function render(){
     }
     else{
         // If total costs exceeds $20,000 then turns the
-        // background of the total cost to red
+        // background of the total cost to red,
+        // else keep background white
         if(totalCosts > 20000){
             $('#totalCost').css('background-color', 'red');
         }
