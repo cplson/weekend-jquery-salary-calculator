@@ -120,6 +120,7 @@ function render(){
     if(allEmployees.length <= 0){
         $('#employeesTable').hide();
         $('#costDiv').hide();
+        $('#noEmployeesMessage').show();
     }
     else{
         // If total costs exceeds $20,000 then turns the
@@ -132,6 +133,7 @@ function render(){
             $('#totalCost').css('background-color', 'white');
         }
         $('#employeesTable').show();
+        $('#noEmployeesMessage').hide();
         $('#costDiv').show();
     }
 
