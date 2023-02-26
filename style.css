@@ -3,7 +3,9 @@
 }
 
 /* GROUPED STYLING */
-
+#submitBtn, table{
+    margin-left: 1.5rem;
+} 
 /* END GROUPED STYLING */
 
 /* HEADER STYLING */
@@ -30,12 +32,8 @@ h2{
     /* border: 2px solid black; */
 }
 
-#submitBtn{
-    margin-left: 1.5rem;
-}
 table{
     border: 2px solid black;
-    margin-left: 1.5rem;
     border-spacing: 0;
 }
 
