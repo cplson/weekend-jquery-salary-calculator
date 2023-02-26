@@ -69,8 +69,12 @@ function submitForm(){
 }
 
 function removeEmployee(){
-    //Test removeEmployee entry
+    // Test removeEmployee entry
     console.log('Entered removeEmployee');
+
+    // Gets the ID of the employee to be removed
+    const ID = $(this).parent().siblings().first().text();
+    console.log('this corresponding employees id is:', ID);
 }
 
 //Function to render updated employees to the DOM
