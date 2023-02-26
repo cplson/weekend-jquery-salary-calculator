@@ -73,11 +73,14 @@ function render(){
 
     if(allEmployees.length === 0){
         $('#employeesTable').hide();
+        $('#costDiv').hide();
     }
     else{
         $('#employeesTable').show();
+        $('#costDiv').show();
     }
 
+    $('#totalCost').text(`$${totalCosts}`);
     //Render every object in the allEmployees array
     for(let employee of allEmployees){
         console.log(employee);
