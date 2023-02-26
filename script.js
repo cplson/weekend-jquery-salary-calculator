@@ -147,7 +147,7 @@ function render(){
                 <td class="annualSalaryData">$<span class="salary">${employee.salary}</span></td>
                 <td>
                     <button class="removeBtn">Remove</button>
-                <td>
+                </td>
             </tr>
         `);
     }

@@ -1,6 +1,11 @@
 *{
     margin: 0;
 }
+
+/* GROUPED STYLING */
+
+/* END GROUPED STYLING */
+
 /* HEADER STYLING */
 header{
     background-color: #555;
@@ -9,15 +14,55 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom:1em;
+    margin-bottom:1.5rem;
 }
 /* END HEADER STYLING */
 
-
-th, td{
-    width: 150px;
+h2{
+    margin: 1.5rem 0 0.5rem 1.5rem;
 }
 
+.label{
+    display: inline-block;
+    margin: 0 0 0.50rem 1.5rem;
+    width: 100px;
+
+    /* border: 2px solid black; */
+}
+
+#submitBtn{
+    margin-left: 1.5rem;
+}
 table{
     border: 2px solid black;
+    margin-left: 1.5rem;
+    border-spacing: 0;
 }
+
+ th, td{
+    /* width: 150px; */
+    border: 1px solid black;
+    padding: 5px;
+} 
+
+th{
+    width: 150px;
+    text-align: left;
+    background-color: #BBB;
+    font-size: 1.1em;
+}
+
+.salary{
+    text-align: right;
+}
+
+.removeBtn{
+    text-align: center;
+}
+
+#costDiv{
+    margin: 1.5rem;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
