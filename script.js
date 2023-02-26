@@ -133,8 +133,8 @@ function render(){
             $('#totalCost').css('background-color', 'white');
         }
         $('#employeesTable').show();
-        $('#noEmployeesMessage').hide();
         $('#costDiv').show();
+        $('#noEmployeesMessage').hide();
     }
 
     //Render every object in the allEmployees array
@@ -171,13 +171,6 @@ function clearFields(){
 function calculateCost(expenses, operation){
     // Test function entry
     console.log('Entered calculateCost');
-    // Reset the costs
-    //totalCosts = 0;
-
-    // iterate through the array and find the total cost
-    // for(let employee of allEmployees){
-    //     totalCosts += Number(employee.salary);
-    // }
 
     // Determines if an employee has been added or removed,
     // and updates the cost appropriately
@@ -189,7 +182,4 @@ function calculateCost(expenses, operation){
         console.log('TEST SUBTRACTION');
         totalCosts -= expenses;
     }
-    console.log(expenses);
-    //test cost
-    console.log(totalCosts);
 }
