@@ -12,6 +12,7 @@ the reported total.
 // Global Variables
 let allEmployees = [];
 let totalCosts = 0;
+let previousNumberOfEmployees;
 
 $('document').ready(onReady);
 
@@ -52,14 +53,18 @@ function submitForm(){
         salary: salary
     }
 
-    // test form object
-    //console.table(employee);
-    
     //Push employee into allEmployees
     allEmployees.push(employee);
 
+    // Set previousNumberOfEmployees for calculateCost function
+    previousNumberOfEmployees = allEmployees.length;
+    // Calculates monthly costs
+    calculateCost(employee);
+
     // Clear input fields
     clearFields();
+
+    
 
     // render the page
     render();
@@ -134,11 +139,11 @@ function render(){
         console.log(employee);
         $('#employeesTable').append(`
             <tr class="employeeRow">
-                <td class="employeeIdData">${employee.id}</td>
+                <td class="employeeIdData">#${employee.id}</td>
                 <td class="firstNameData">${employee.first}</td>
                 <td class="lastNameData">${employee.last}</td>
                 <td class="jobTitleData">${employee.title}</td>
-                <td class="annualSalaryData">${employee.salary}</td>
+                <td class="annualSalaryData">$${employee.salary}</td>
                 <td><button class="removeBtn">Remove</button><td>
             </tr>
         `);
@@ -158,15 +163,21 @@ function clearFields(){
 }
 
 // Calculate cost
-function calculateCost(){
+function calculateCost(employee){
     // Test function entry
     console.log('Entered calculateCost');
     // Reset the costs
-    totalCosts = 0;
+    //totalCosts = 0;
 
     // iterate through the array and find the total cost
-    for(let employee of allEmployees){
-        totalCosts += Number(employee.salary);
+    // for(let employee of allEmployees){
+    //     totalCosts += Number(employee.salary);
+    // }
+
+    // Determines if an employee has been added or removed,
+    // and updates the cost appropriately
+    if(allEmployees.length > previousNumberOfEmployees){
+        totalCosts += employee.salary;
     }
 
     //test cost
