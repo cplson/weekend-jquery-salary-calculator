@@ -1,13 +1,5 @@
 /*
-Assignment
-*The application should have an input form that collects employee 
-first name, last name, ID number, job title, annual salary.
-
-
-
-*Create a delete button that removes an employee from the DOM. For 
-Base mode, it does not need to remove that Employee's salary from 
-the reported total.
+Assignment - Employee Salary Calculator
 */
 // Global Variables
 let allEmployees = [];
