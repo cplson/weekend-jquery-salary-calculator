@@ -53,13 +53,14 @@ function submitForm(){
         salary: salary
     }
 
+    // Set previousNumberOfEmployees for calculateCost function
+    previousNumberOfEmployees = allEmployees.length;
+
     //Push employee into allEmployees
     allEmployees.push(employee);
 
-    // Set previousNumberOfEmployees for calculateCost function
-    previousNumberOfEmployees = allEmployees.length;
     // Calculates monthly costs
-    calculateCost(employee);
+    calculateCost(Number(employee.salary), 'added');
 
     // Clear input fields
     clearFields();
@@ -81,13 +82,16 @@ function removeEmployee(){
     const updatedEmployees = [];
 
     // Gets the ID of the employee to be removed
-    const ID = $(this).parent().siblings().first().text();
+    const ID = $(this).parent().siblings().first().children().first().text();
     console.log('this corresponding employees id is:', ID);
 
     // loop through every employee in allEmployees array
     for(let employee of allEmployees){
+        console.log(employee.id, ID);
         if(employee.id === ID){
             console.log('found match');
+            // Calculates monthly costs
+            calculateCost(Number(employee.salary), 'removed');
         }
         else{
             // if employee is not a match push it to the 
@@ -98,6 +102,7 @@ function removeEmployee(){
 
     // update allEmployees
     allEmployees = updatedEmployees;
+    
 
     //render the updated info
     render();
@@ -109,7 +114,7 @@ function render(){
     console.log('Entered render');
 
     //Calculate costs
-    calculateCost();
+    //calculateCost();
 
     // Empty the employees table
     $('.employeeRow').empty();
@@ -124,7 +129,7 @@ function render(){
         // If total costs exceeds $20,000 then turns the
         // background of the total cost to red,
         // else keep background white
-        if(totalCosts > 20000){
+        if(Number(totalCosts) > 20000){
             $('#totalCost').css('background-color', 'red');
         }
         else{
@@ -139,12 +144,14 @@ function render(){
         console.log(employee);
         $('#employeesTable').append(`
             <tr class="employeeRow">
-                <td class="employeeIdData">#${employee.id}</td>
+                <td class="employeeIdData">#<span class='id'>${employee.id}</span></td>
                 <td class="firstNameData">${employee.first}</td>
                 <td class="lastNameData">${employee.last}</td>
                 <td class="jobTitleData">${employee.title}</td>
-                <td class="annualSalaryData">$${employee.salary}</td>
-                <td><button class="removeBtn">Remove</button><td>
+                <td class="annualSalaryData">$<span class="salary">${employee.salary}</span></td>
+                <td>
+                    <button class="removeBtn">Remove</button>
+                <td>
             </tr>
         `);
     }
@@ -163,7 +170,7 @@ function clearFields(){
 }
 
 // Calculate cost
-function calculateCost(employee){
+function calculateCost(expenses, operation){
     // Test function entry
     console.log('Entered calculateCost');
     // Reset the costs
@@ -176,10 +183,15 @@ function calculateCost(employee){
 
     // Determines if an employee has been added or removed,
     // and updates the cost appropriately
-    if(allEmployees.length > previousNumberOfEmployees){
-        totalCosts += employee.salary;
+    if(operation === 'added'){
+        console.log('TEST ADD');
+        totalCosts += expenses;
     }
-
+    else if(operation === 'removed'){
+        console.log('TEST SUBTRACTION');
+        totalCosts -= expenses;
+    }
+    console.log(expenses);
     //test cost
     console.log(totalCosts);
 }
