@@ -19,15 +19,19 @@ $('document').ready(onReady);
 function onReady(){
     //Listener to submit form information
     $('#submitBtn').on('click', submitForm);
+
+    // Listener to remove employee from allEmployees array on 
+    // Remove button click
+    $('#employeesTable').on('click', '.removeBtn', removeEmployee);
 }
 
 /*
 *Collect the form information 
 *Store the information to calculate monthly costs 
 *append information to the DOM and clear the input fields. 
--Using the stored information, 
-calculate monthly costs and append this to the to DOM. 
-    ~If the total monthly cost exceeds $20,000, 
+*Using the stored information, 
+ calculate monthly costs and append this to the to DOM. 
+    *~If the total monthly cost exceeds $20,000, 
     add a red background color to the total monthly cost.
  */
 function submitForm(){
@@ -60,7 +64,13 @@ function submitForm(){
     //Calculate costs
     calculateCost();
 
+    // render the page
     render();
+}
+
+function removeEmployee(){
+    //Test removeEmployee entry
+    console.log('Entered removeEmployee');
 }
 
 //Function to render updated employees to the DOM
@@ -83,6 +93,9 @@ function render(){
         if(totalCosts > 20000){
             $('#totalCost').css('background-color', 'red');
         }
+        else{
+            $('#totalCost').css('background-color', 'white');
+        }
         $('#employeesTable').show();
         $('#costDiv').show();
     }
@@ -97,6 +110,7 @@ function render(){
                 <td class="lastNameData">${employee.last}</td>
                 <td class="jobTitleData">${employee.title}</td>
                 <td class="annualSalaryData">${employee.salary}</td>
+                <td><button class="removeBtn">Remove</button><td>
             </tr>
         `);
     }
