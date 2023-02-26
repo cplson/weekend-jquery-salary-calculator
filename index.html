@@ -10,40 +10,44 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Employee Form</h1>
+    <header>
+        <h1>Salary Calculator</h1>
+    </header>
+    <h2>Add Employee</h2>
     <!-- Input form -->
     <!-- employee first name, last name, ID number, job title, annual salary. -->
     <div id="inputForm">
         <!-- First Name field -->
         <div>
             <label for="" class="label">First Name:</label>
-            <input type="text" class="input" id="firstNameInput" required>
+            <input type="text" class="input" id="firstNameInput" placeholder="first name" required>
         </div>
         <!-- Last Name field -->
         <div>
             <label for="" class="label">Last Name:</label>
-            <input type="text" class="input" id="lastNameInput" required>
+            <input type="text" class="input" id="lastNameInput" placeholder="last name" required>
         </div>
         <!-- ID Number field -->
         <div>
             <label for="" class="label">ID Number:</label>
-            <input type="number" class="input" id="idNumberInput" required>
+            <input type="number" class="input" id="idNumberInput" placeholder="id" required>
         </div>
         <!-- Job Title field -->
         <div>
             <label for="" class="label">Job Title:</label>
-            <input type="text" class="input" id="titleInput" required>
+            <input type="text" class="input" id="titleInput" placeholder="title" required>
         </div>
         <!-- Annual Salary field -->
         <div>
             <label for="" class="label">Annual Salary:</label>
-            <input type="number" class="input" id="salaryInput" required>
+            <input type="number" class="input" id="salaryInput" placeholder="salary" required>
         </div>
         <!-- Submit button -->
         <button id="submitBtn">Submit</button>
     </div>
 
     <!-- Employee table -->
+    <h2>Employees</h2>
     <div id="tableContainer">
         <table id="employeesTable" hidden>
             <tr id=column-info>
