@@ -69,9 +69,11 @@ function render(){
     console.log('Entered render');
 
     // Empty the employees table
-    $('#employeesTable').empty();
+    $('#employeesData').empty();
 
-    if(allEmployees.length === 0){
+    // shows the employee table data and monthly cost div,
+    // unless there are no employees in the array
+    if(allEmployees.length <= 0){
         $('#employeesTable').hide();
         $('#costDiv').hide();
     }
@@ -80,7 +82,6 @@ function render(){
         $('#costDiv').show();
     }
 
-    $('#totalCost').text(`$${totalCosts}`);
     //Render every object in the allEmployees array
     for(let employee of allEmployees){
         console.log(employee);
@@ -94,6 +95,9 @@ function render(){
             </tr>
         `);
     }
+
+    // Updates the Dom with the current monthly cost
+    $('#totalCost').text(`$${totalCosts}`);
 }
 
 // Funcion to clear input fields

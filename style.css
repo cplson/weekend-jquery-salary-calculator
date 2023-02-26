@@ -1,3 +1,11 @@
 *{
     margin: 0;
 }
+
+th, td{
+    width: 150px;
+}
+
+table{
+    border: 2px solid black;
+}
