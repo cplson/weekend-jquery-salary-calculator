@@ -12,7 +12,6 @@ the reported total.
 // Global Variables
 let allEmployees = [];
 let totalCosts = 0;
-let previousNumberOfEmployees;
 
 $('document').ready(onReady);
 
@@ -41,34 +40,39 @@ function submitForm(){
     // Create the variables to store employee info
     const firstName = $('#firstNameInput').val();
     const lastName = $('#lastNameInput').val();
-    const IdNumber = $('#idNumberInput').val();
+    const idNumber = $('#idNumberInput').val();
     const title = $('#titleInput').val();
     const salary = $('#salaryInput').val();
 
     let employee = {
         first: firstName,
         last: lastName,
-        id: IdNumber,
+        id: idNumber,
         title: title,
         salary: salary
     }
 
-    // Set previousNumberOfEmployees for calculateCost function
-    previousNumberOfEmployees = allEmployees.length;
+    // if input fields are valid then submit form,
+    // else alert the user for corrective action
+    if(firstName &&
+        lastName &&
+        idNumber &&
+        title &&
+        salary){
+        //Push employee into allEmployees
+        allEmployees.push(employee);
 
-    //Push employee into allEmployees
-    allEmployees.push(employee);
+        // Calculates monthly costs
+        calculateCost(Number(employee.salary), 'added');
 
-    // Calculates monthly costs
-    calculateCost(Number(employee.salary), 'added');
+        // Clear input fields
+        clearFields(); 
 
-    // Clear input fields
-    clearFields();
-
-    
-
-    // render the page
-    render();
+        // render the page
+        render();
+    }else{
+        alert('Please fill out all fields');
+    }
 }
 
 // When a remove button is clicked, the corresponding employee
