@@ -4,6 +4,7 @@ Assignment - Employee Salary Calculator
 // Global Variables
 let allEmployees = [];
 let totalCosts = 0;
+const MonthsInYear = 12;
 
 $('document').ready(onReady);
 
@@ -176,10 +177,10 @@ function calculateCost(expenses, operation){
     // and updates the cost appropriately
     if(operation === 'added'){
         console.log('TEST ADD');
-        totalCosts += expenses;
+        totalCosts += Math.round(100 * (expenses / MonthsInYear)) / 100;
     }
     else if(operation === 'removed'){
         console.log('TEST SUBTRACTION');
-        totalCosts -= expenses;
+        totalCosts -= Math.round(100 * (expenses / MonthsInYear)) / 100;
     }
 }
